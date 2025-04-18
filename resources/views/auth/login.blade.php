@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="w-full">
-        <div class="row justify-content-center">
+    <div class="w-full container justify-center bg-gray-100">
+        <div class="row h-screen">
             <div class="">
-                <div class="container mt-5 border rounded-lg shadow-sm bg-white p-4">
-                    <div class="text-center text-2xl mb-6 font-bold">{{ __('Login') }}</div>
-
+                <div class="text-center text-3xl my-6 font-bold">{{ __('Login') }}</div>
+                <div class=" mt-5 border rounded-lg shadow-sm bg-white p-4">
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
@@ -45,7 +44,7 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember"
