@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt-5">
+    <div class="container mt-5 h-screen">
         <h2 class="text-3xl font-bold">
             {{ __('Profile') }}
         </h2>
@@ -28,6 +28,15 @@
 
         <p><strong>Nama:</strong> {{ Auth::user()->name }}</p>
         <p><strong>Email:</strong> {{ Auth::user()->email }}</p>
+        <p><strong>Role:</strong>
+            @if (Auth::user()->role == 'admin')
+                Admin
+            @elseif (Auth::user()->role == 'user')
+                User
+            @else
+                {{ Auth::user()->role }}
+            @endif
+        </p>
         <a href="{{ route('profile.edit') }}" class="btn btn-primary">Edit Profile</a>
     </div>
 @endsection

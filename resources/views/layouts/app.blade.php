@@ -34,7 +34,7 @@
 
 <body class="bg-gray-100 anti-aliasing">
     <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Amore
@@ -67,11 +67,29 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <li class="dropdown  item-center justify-center">
+                                {{-- profile image --}}
+                                <a id="navbarDropdown" class=" flex no-underline" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    <div class="items-center px-1">
+                                        {{-- profile image --}}
+                                        @if (Auth::user()->profile_image == null)
+                                            <div
+                                                class="bg-blue-700 rounded-full w-8 h-8 flex items-center justify-center border border-red-400 border-2 rounded-full w-8 h-8 flex">
+                                                <span class="text-1xl font-bold text-white text-decoration-none">
+                                                    {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                                                </span>
+                                            </div>
+                                        @else
+                                            <img src="{{ Auth::user()->profile_image }}" alt="Profile Image"
+                                                class="border border-x border-black rounded-full w-32 h-32">
+                                        @endif
+                                    </div>
+                                    <div class="  text-gray-600">
+                                        {{ Auth::user()->name }}
+                                    </div>
                                 </a>
+
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('profile.show') }}">
@@ -80,7 +98,7 @@
 
                                     {{-- view course --}}
                                     <a class="dropdown-item" href="{{ route('courses.index') }}">
-                                        {{ __('My Courses') }}
+                                        {{ __('Dashboard') }}
 
                                         <a class="dropdown-item" href="{{ route('profile.edit') }}">
                                             {{ __('Edit Profile') }}
@@ -110,7 +128,7 @@
         </main>
 
         {{-- floats on the bottom of screen --}}
-        <footer class="bg-gray-800 text-white text-center py-4 mt-auto fixed-bottom">
+        <footer class="bg-gray-800 text-white text-center py-4 mt-auto float-bottom">
             <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
                 <p style="font-size: 14px; margin-bottom: 10px;">&copy; 2025 Find Your Mentor. All Rights Reserved.</p>
                 <div>
